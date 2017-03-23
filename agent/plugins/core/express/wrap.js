@@ -127,7 +127,7 @@ var wrap = function (express) {
       return ret;
     }
 
-    var callback = interceptor(original_callback_first, express0Route0get);
+    var callback = interceptor(original_callback_first, express0Route0post);
     var args = [callback].concat(original_callback_list);
     var ret = original_Route_post.apply(this, args);
     return ret;
@@ -181,7 +181,7 @@ var wrap = function (express) {
       return ret;
     }
 
-    var callback = interceptor(original_callback_first, express0Route0get);
+    var callback = interceptor(original_callback_first, express0Route0put);
     var args = [callback].concat(original_callback_list);
     var ret = original_Route_put.apply(this, args);
     return ret;
@@ -232,7 +232,7 @@ var wrap = function (express) {
       return ret;
     }
 
-    var callback = interceptor(original_callback_first, express0Route0get);
+    var callback = interceptor(original_callback_first, express0Route0delete);
     var args = [callback].concat(original_callback_list);
     var ret = original_Route_delete.apply(this, args);
     return ret;
