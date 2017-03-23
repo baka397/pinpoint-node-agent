@@ -23,7 +23,7 @@ var Agent = require('./agent/commons/agent.js');
 var Configuration = require('./agent/conf/read_config.js');
 
 //get agent conf 
-var conf =  new Configuration();
+var conf =  new Configuration(process.env.PINPOINT_PATH);
 var defaultAgent = new Agent(conf);
 global.PinpointNodejsAgent = defaultAgent;
 

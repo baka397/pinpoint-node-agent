@@ -29,8 +29,8 @@ var wrap = function (express) {
 
   var original_Route_get = original_Route.prototype.get;
   express.Route.prototype.get = function get() {
-    var original_callback = arguments[0];
-
+    var original_callback_list = Array.prototype.slice.call(arguments, 1);
+    var original_callback_first = arguments[0];
     function express0Route0get(original, proxy, argument) {
 
       var req = argument[0];
@@ -74,8 +74,8 @@ var wrap = function (express) {
       return ret;
     }
 
-    var callback = interceptor(original_callback, express0Route0get);
-    var args = [callback];
+    var callback = interceptor(original_callback_first, express0Route0get);
+    var args = [callback].concat(original_callback_list);
     var ret = original_Route_get.apply(this, args);
     return ret;
   };
@@ -83,7 +83,8 @@ var wrap = function (express) {
   var original_Route_post = original_Route.prototype.post;
   express.Route.prototype.post = function () {
 
-    var original_callback = arguments[0];
+    var original_callback_list = Array.prototype.slice.call(arguments, 1);
+    var original_callback_first = arguments[0];
 
     function express0Route0post(original, proxy, argument) {
 
@@ -126,8 +127,8 @@ var wrap = function (express) {
       return ret;
     }
 
-    var callback = interceptor(original_callback, express0Route0post);
-    var args = [callback];
+    var callback = interceptor(original_callback_first, express0Route0get);
+    var args = [callback].concat(original_callback_list);
     var ret = original_Route_post.apply(this, args);
     return ret;
   };
@@ -136,7 +137,8 @@ var wrap = function (express) {
   var original_Route_put = original_Route.prototype.put;
   express.Route.prototype.put = function () {
 
-    var original_callback = arguments[0];
+    var original_callback_list = Array.prototype.slice.call(arguments, 1);
+    var original_callback_first = arguments[0];
 
     function express0Route0put(original, proxy, argument) {
 
@@ -179,8 +181,8 @@ var wrap = function (express) {
       return ret;
     }
 
-    var callback = interceptor(original_callback, express0Route0put);
-    var args = [callback];
+    var callback = interceptor(original_callback_first, express0Route0get);
+    var args = [callback].concat(original_callback_list);
     var ret = original_Route_put.apply(this, args);
     return ret;
   };
@@ -188,7 +190,8 @@ var wrap = function (express) {
   var original_Route_delete = original_Route.prototype.delete;
   express.Route.prototype.delete = function () {
 
-    var original_callback = arguments[0];
+    var original_callback_list = Array.prototype.slice.call(arguments, 1);
+    var original_callback_first = arguments[0];
 
     function express0Route0delete(original, proxy, argument) {
 
@@ -229,8 +232,8 @@ var wrap = function (express) {
       return ret;
     }
 
-    var callback = interceptor(original_callback, express0Route0delete);
-    var args = [callback];
+    var callback = interceptor(original_callback_first, express0Route0get);
+    var args = [callback].concat(original_callback_list);
     var ret = original_Route_delete.apply(this, args);
     return ret;
   };
