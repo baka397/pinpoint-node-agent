@@ -19,7 +19,7 @@
 var fs = require('fs');
 var path = require('path');
 
-var defaultConfFile = path.join(__dirname, 'pinpoint.config');
+var defaultConfFile = process.env.PINPOINT_PATH?path.resolve(process.env.PINPOINT_PATH):path.join(__dirname, 'pinpoint.config');
 
 function Configuration(confFile) {
     if (confFile === null || confFile === undefined) {
