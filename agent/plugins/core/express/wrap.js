@@ -29,8 +29,6 @@ var wrap = function (express) {
 
   var original_Route_get = original_Route.prototype.get;
   express.Route.prototype.get = function get() {
-    var original_callback_list = Array.prototype.slice.call(arguments, 1);
-    var original_callback_first = arguments[0];
     function express0Route0get(original, proxy, argument) {
 
       var req = argument[0];
