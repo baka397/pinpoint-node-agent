@@ -62,8 +62,13 @@ var wrap = function (express) {
       try {
         var args = [req, res, next];
         ret = original.apply(proxy, args);
-        if (res.statusCode !== 200) {
-          throw new Error(res.statusCode + ' ' + res.statusMessage);
+        switch(res.statusCode){
+          case 200:
+          case 301:
+          case 302:
+            break;
+          default:
+            throw new Error(res.statusCode + ' ' + res.statusMessage);
         }
       } catch (err) {
         traceContext.recordException(err);
@@ -112,8 +117,13 @@ var wrap = function (express) {
       try {
         var args = [req, res, next];
         ret = original.apply(proxy, args);
-        if (res.statusCode !== 200) {
-          throw new Error(res.statusCode + ' ' + res.statusMessage);
+        switch(res.statusCode){
+          case 200:
+          case 301:
+          case 302:
+            break;
+          default:
+            throw new Error(res.statusCode + ' ' + res.statusMessage);
         }
       } catch (err) {
         traceContext.recordException(err);
@@ -164,8 +174,13 @@ var wrap = function (express) {
       try {
         var args = [req, res, next];
         ret = original.apply(proxy, args);
-        if (res.statusCode !== 200) {
-          throw new Error(res.statusCode + ' ' + res.statusMessage);
+        switch(res.statusCode){
+          case 200:
+          case 301:
+          case 302:
+            break;
+          default:
+            throw new Error(res.statusCode + ' ' + res.statusMessage);
         }
       } catch (err) {
         traceContext.recordException(err);
@@ -213,8 +228,13 @@ var wrap = function (express) {
       var ret;
       try {
         ret = original.apply(proxy, argument);
-        if (res.statusCode !== 200) {
-          throw new Error(res.statusCode + ' ' + res.statusMessage);
+        switch(res.statusCode){
+          case 200:
+          case 301:
+          case 302:
+            break;
+          default:
+            throw new Error(res.statusCode + ' ' + res.statusMessage);
         }
       } catch (err) {
         traceContext.recordException(err);
@@ -260,8 +280,13 @@ var wrap = function (express) {
     try {
       ret = original.apply(proxy, argument);
       console.log(res.statusCode);
-      if (res.statusCode !== 200) {
-        throw new Error(res.statusCode + ' ' + res.statusMessage);
+      switch(res.statusCode){
+        case 200:
+        case 301:
+        case 302:
+          break;
+        default:
+          throw new Error(res.statusCode + ' ' + res.statusMessage);
       }
     } catch (err) {
       traceContext.recordException(err);
